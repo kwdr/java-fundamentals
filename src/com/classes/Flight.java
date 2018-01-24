@@ -2,7 +2,17 @@ package com.classes;
 
 public class Flight {
     private int passengers;
-    private int seats;
+    private int seats = 150;
+    private char flightClass;
+    private boolean[] isSeatAvailable;
+    private int flightNumber;
+
+    {
+        isSeatAvailable = new boolean[this.seats];
+
+        for (int i = 0; i < this.seats; i++)
+            isSeatAvailable[i] = true;
+    }
 
     public int getPassengers() {
         return passengers;
@@ -48,5 +58,17 @@ public class Flight {
         newFlight.passengers += passengers;
         return newFlight;
 
+    }
+
+    public Flight() {
+
+    }
+
+    public Flight(int flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public Flight(char flightClass) {
+        this.flightClass = flightClass;
     }
 }
