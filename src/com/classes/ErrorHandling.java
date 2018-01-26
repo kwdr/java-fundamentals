@@ -1,6 +1,7 @@
 package com.classes;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -16,8 +17,15 @@ public class ErrorHandling {
             while ((line = reader.readLine()) != null )
                 total += Integer.valueOf(line);
             System.out.println("Total: " + total);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid value: " + e.getMessage());
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Not found: " + e.getMessage() );
+
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception: " +  e.getMessage());
+
         } finally {
 
             if (reader != null) {
