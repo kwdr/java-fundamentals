@@ -24,12 +24,19 @@ public class Flight {
     public void addPassengers(String filename) throws IOException {
         BufferedReader reader = null;
 
-        reader = new BufferedReader(new FileReader(filename));
-        String line = null;
-        while ((line = reader.readLine()) != null) {
-            String[] parts = line.split(" ");
-            passangers += Integer.valueOf(parts[0]);
+        try {
+            reader = new BufferedReader(new FileReader(filename));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(" ");
+                passangers += Integer.valueOf(parts[0]);
+            }
+        } finally {
+            if (reader != null){
+                reader.close();
+            }
         }
+
 
     }
 }
